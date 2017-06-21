@@ -1,0 +1,183 @@
+{"frames": [
+
+{
+	"filename": "ani_logo_0.png",
+	"frame": {"x":0,"y":0,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_1.png",
+	"frame": {"x":343,"y":0,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_2.png",
+	"frame": {"x":686,"y":0,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_3.png",
+	"frame": {"x":1029,"y":0,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_4.png",
+	"frame": {"x":1372,"y":0,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_5.png",
+	"frame": {"x":0,"y":337,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_6.png",
+	"frame": {"x":343,"y":337,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_7.png",
+	"frame": {"x":686,"y":337,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_8.png",
+	"frame": {"x":1029,"y":337,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_9.png",
+	"frame": {"x":1372,"y":337,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_10.png",
+	"frame": {"x":0,"y":674,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_11.png",
+	"frame": {"x":343,"y":674,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_12.png",
+	"frame": {"x":686,"y":674,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_13.png",
+	"frame": {"x":1029,"y":674,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_14.png",
+	"frame": {"x":1372,"y":674,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_15.png",
+	"frame": {"x":0,"y":1011,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_16.png",
+	"frame": {"x":343,"y":1011,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_17.png",
+	"frame": {"x":686,"y":1011,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ani_logo_18.png",
+	"frame": {"x":1029,"y":1011,"w":343,"h":337},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":337},
+	"sourceSize": {"w":343,"h":337},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "logo.png",
+	"format": "RGBA8888",
+	"size": {"w":1715,"h":1348},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ae5eb5a0b0333ec2e090e8b924139db8:162287c0cb3afd9b8c4b86dfe75ef578:6364ef14a8fbfea741f45122167fa6a7$"
+}
+}
