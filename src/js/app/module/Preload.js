@@ -128,7 +128,7 @@ fn.readAjax = function (data) {
     img.src = this.path + data.meta.image;
 };
 
-// 加载百分比
+// 加载进度
 fn.updateProgress = function () {
     this.loadedNum++;
     var p = this.loadedNum / this.loadNum * 100;
