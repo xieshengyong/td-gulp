@@ -32,8 +32,6 @@ mediaSprite.play('first', function (name) {
     console.log(name + ' end');
 }, true);
 
-
-
  */
 
 var MediaSprite = function (config) {
@@ -44,18 +42,19 @@ var MediaSprite = function (config) {
     this.started();
     this.view = this.media;
     this.loopPool = {};
-}
+};
 
-MediaSprite.prototype.view = null;
+var fn = MediaSprite.prototype;
 
-MediaSprite.prototype.loopPool = null;
+fn.view = null;
 
-MediaSprite.prototype.createMedia = function() {
-    var config = this.config,
-        media = this.media;
+fn.loopPool = null;
 
-    if(config.type === 'video'){
+fn.createMedia = function () {
+    var config = this.config;
+    var media = this.media;
 
+    if (config.type === 'video') {
         media = document.createElement('video');
 
         media.setAttribute('webkit-playsinline', '');
@@ -64,98 +63,79 @@ MediaSprite.prototype.createMedia = function() {
 
         media.setAttribute('preload', 'preload');
 
-        //没播放前最小化，防止部分机型闪现微信原生按钮
+        // 没播放前最小化，防止部分机型闪现微信原生按钮
         media.style.width = '1px';
         media.style.height = 'auto';
-
     } else {
-
         media = document.createElement('audio');
-
     }
 
     media.src = config.src;
 
-    media.id = 'spriteMedia' + Math.floor(Math.random()*100000);
+    media.id = 'spriteMedia' + Math.floor(Math.random() * 100000);
 
-    if( config.wrap ) {
-
+    if (config.wrap) {
         document.querySelector(config.wrap).appendChild(media);
-
     } else {
-
         document.body.appendChild(media);
-
     }
 
     this.media = document.querySelector('#' + media.id);
-    
 };
 
-MediaSprite.prototype.play = function(name, callback, loop) {
+fn.play = function (name, callback, loop) {
     var self = this;
 
-    var begin = this.config.timeline[name].begin,
-        end = this.config.timeline[name].end,
-        media = this.media;
+    var begin = this.config.timeline[name].begin;
+    var end = this.config.timeline[name].end;
+    var media = this.media;
 
     media.currentTime = begin;
 
     console.log(media.currentTime);
 
     var playHandler = function () {
-
-        if(this.currentTime >= end){
-            if(loop){
-
-                if ( self.loopPool[name] && self.loopPool[name] === 'pause' ) {
-                    console.log('pause')
+        if (this.currentTime >= end) {
+            if (loop) {
+                if (self.loopPool[name] && self.loopPool[name] === 'pause') {
+                    console.log('pause');
                     media.removeEventListener('timeupdate', playHandler);
                     return;
                 }
-                    console.log('loop')
+                console.log('loop');
 
                 media.currentTime = begin;
-
             } else {
-
                 this.pause();
 
                 media.removeEventListener('timeupdate', playHandler);
 
                 callback && callback(name);
-
             }
         }
     };
 
     media.addEventListener('timeupdate', playHandler);
 
-    //异步执行防止直接play的报错
+    // 异步执行防止直接play的报错
     setTimeout(function () {
         media.play();
-    }, 0)
-
+    }, 0);
 };
 
-MediaSprite.prototype.started = function(callback) {
+fn.started = function (callback) {
     var media = this.media;
     var beginTime = function () {
-
-        if( this.currentTime > 0 ){
-
+        if (this.currentTime > 0) {
             media.style.width = '100%';
 
             callback && callback();
 
             media.removeEventListener('timeupdate', beginTime);
-
         }
-         
-    }
+    };
 
     media.addEventListener('timeupdate', beginTime);
-    
 };
 
 module.exports = MediaSprite;
