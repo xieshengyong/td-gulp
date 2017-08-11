@@ -1,5 +1,6 @@
-
+require('./module/TD');
 var Preload = require('./module/Preload');
+var MediaSprite = require('./module/MediaSprite');
 
 var Config = {};
 
@@ -7,8 +8,7 @@ var Config = {};
 Config.requireUrl = '';
 
 // 图片路径前缀
-//  Config.imgPath = 'http://qrs.treedom.cn/streetgame/';
-Config.imgPath = '/ossweb-img/';
+Config.imgPath = '/dist/img/';
 
 // 默认分享语
 Config.defShare = {
@@ -24,39 +24,24 @@ Config.defShare = {
     cnzz: '1259179479'
 };
 
-Config.scale = 1;
-
 Config.Loader = Preload.Loader;
 Config.Buffer = Preload.Buffer;
 
-// 预加载的图片
-Config.pageImgs = {
-    imgs: [
-        /*
-        {
-            name: 'bg_end_bg',
-            url: Config.imgPath + 'bg_end_bg.jpg'
+var med = new MediaSprite({
+    wrap: '.m-video-wrap',
+    type: 'video',
+    src: 'http://lolkhj.treedom.cn/dist/img/v7.mp4',
+    fps: 25,
+    timeline: {
+        a: {
+            begin: 0,
+            end: 4.05
         }
-        */
-    ],
-    sprites: [
-        /*
-        {
-            el: $('.m-game .kf-game-video'),
-            pathPrefix: Config.imgPath,
-            postfix: 'jpg'
-        }
-        */
-    ],
-    keyimgs: [
-        /*
-        {
-            el: $('.m-game .kf-game-video'),
-            pathPrefix: Config.imgPath,
-            postfix: 'jpg'
-        }
-        */
-    ]
-};
+    }
+});
+
+$('body').one('touchend', function () {
+    med.play('a');
+});
 
 module.exports = Config;

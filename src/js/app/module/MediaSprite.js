@@ -41,14 +41,11 @@ var MediaSprite = function (config) {
     this.createMedia();
     this.started();
     this.view = this.media;
-    this.loopPool = {};
 };
 
 var fn = MediaSprite.prototype;
 
 fn.view = null;
-
-fn.loopPool = null;
 
 fn.createMedia = function () {
     var config = this.config;
@@ -72,54 +69,76 @@ fn.createMedia = function () {
 
     media.src = config.src;
 
-    media.id = 'spriteMedia' + Math.floor(Math.random() * 100000);
-
     if (config.wrap) {
         document.querySelector(config.wrap).appendChild(media);
     } else {
         document.body.appendChild(media);
     }
 
-    this.media = document.querySelector('#' + media.id);
+    this.media = media;
 };
 
-fn.play = function (name, callback, loop) {
+fn.play = function (name, loop, callback) {
     var self = this;
+    var config = this.config;
+    var thispart = config.timeline[name];
 
-    var begin = this.config.timeline[name].begin;
-    var end = this.config.timeline[name].end;
+    var spaceTime = 1 / config.fps;
+    var update = 0.25;
+
+    var begin = thispart.begin;
+    var beginInt = parseInt(begin);
+    // 将后两位由帧数转化为秒数
+    begin = beginInt + Math.abs(beginInt - begin) * spaceTime * 100;
+
+    var end = thispart.end;
+    var u = navigator.userAgent;
+    // 安卓上暂停时会少播一帧，那就多加一帧
+    if ((u.indexOf('Android') > -1 || u.indexOf('Adr') > -1) && navigator.platform !== 'Win32') {
+        end += 0.01;
+    }
+    var endInt = parseInt(end);
+    // 将后两位由帧数转化为秒数
+    end = endInt + Math.abs(endInt - end) * spaceTime * 100;
+
     var media = this.media;
 
-    media.currentTime = begin;
+    self.playHandler && self.media.removeEventListener('timeupdate', self.playHandler);
 
-    console.log(media.currentTime);
+    if (begin || begin === 0) {
+        self.media.currentTime = begin;
+        this.lastEnd = end;
+    } else {
+        begin = this.lastEnd;
+        self.media.currentTime = begin;
+    }
 
     var playHandler = function () {
-        if (this.currentTime >= end) {
-            if (loop) {
-                if (self.loopPool[name] && self.loopPool[name] === 'pause') {
-                    console.log('pause');
-                    media.removeEventListener('timeupdate', playHandler);
-                    return;
+        var space = end - media.currentTime;
+        if (space <= update) {
+            media.removeEventListener('timeupdate', playHandler);
+            var time = Math.ceil(space * 1000);
+            time = time > 0 ? time : 0;
+            // 在倒数第二次触发timeupdate时取消侦听，转为setTimeout定时暂停，以达到精准暂停效果
+            setTimeout(function () {
+                if (loop) {
+                    media.currentTime = begin;
+                    media.addEventListener('timeupdate', playHandler);
+                } else {
+                    media.pause();
                 }
-                console.log('loop');
-
-                media.currentTime = begin;
-            } else {
-                this.pause();
-
-                media.removeEventListener('timeupdate', playHandler);
-
-                callback && callback(name);
-            }
+                callback && callback();
+            }, time);
         }
     };
 
-    media.addEventListener('timeupdate', playHandler);
+    self.playHandler = playHandler;
+
+    self.media.addEventListener('timeupdate', playHandler);
 
     // 异步执行防止直接play的报错
     setTimeout(function () {
-        media.play();
+        self.media.play();
     }, 0);
 };
 
@@ -127,6 +146,7 @@ fn.started = function (callback) {
     var media = this.media;
     var beginTime = function () {
         if (this.currentTime > 0) {
+            // 开始播放后最大化
             media.style.width = '100%';
 
             callback && callback();

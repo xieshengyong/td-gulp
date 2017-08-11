@@ -6,6 +6,7 @@ require('zepto');
 /*
     可按需加载Zepto模块
 */
+require('./app/module/fx'); // 以动画形式的 show, hide, toggle, 和 fade*()方法.依赖fx模块。
 require('./app/module/fx_methods'); // 以动画形式的 show, hide, toggle, 和 fade*()方法.依赖fx模块。
 // require('./app/module/howler.core.js');
 

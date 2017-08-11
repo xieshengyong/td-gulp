@@ -417,6 +417,7 @@ TD.debug.log = function (info, num) {
     domWrap.appendChild(text);
     window.lloogg++;
 };
+window.log = TD.debug.log;
 
 /*
 隐藏手势功能，在视频项目时非常好用；

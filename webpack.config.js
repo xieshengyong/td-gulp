@@ -1,7 +1,7 @@
 
 module.exports = {
     entry: {
-        main: "./src/js/index.js",
+        main: './src/js/index.js',
     },
     output: {
         path: '.',
@@ -11,12 +11,12 @@ module.exports = {
         loaders: [
             {
                 test: /js[\/|\\]lib[\/||\\][\w|\.|_|-]+js$/,
-                loader: 'url-loader?importLoaders=1&limit=1000&name=/js/lib/[name].[ext]'
+                loader: 'url-loader?importLoaders=1&limit=1000&name=/dist/js/[name].[ext]'
             },
             {
                 test: /\.js$/,
-                exclude: /(node_modules|dist|js[\/|\\]lib[\/||\\][\w|\.|_|-]+js$|fx_methods)/,
-                loaders: ['babel-loader', 'eslint-loader']
+                exclude: /(node_modules|dist|js[\/|\\]lib[\/||\\][\w|\.|_|-]+js$|fx|fx_methods)/,
+                loaders: ['babel-loader']
             }
         ]
     },
@@ -25,11 +25,10 @@ module.exports = {
             'zepto': './lib/zepto.min.js'
         }
     },
-    plugins: [
-        
-    ],
+    plugins: [],
     externals: {
-        '$':'window.$',
-        'global' : 'window.global'
+        '$': 'window.$',
+        'global': 'window.global',
+        'TweenLite': 'window.TweenLite'
     }
 };
