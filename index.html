@@ -17,6 +17,7 @@
     <!-- rem布局初始化设置start -->
     <script type="text/javascript">
         (function(doc, win) {
+            layoutType = 'contain';
             var docEl = doc.documentElement,
                 rszEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
                 reCalc = (function() {
@@ -25,17 +26,25 @@
                         var winHeight = docEl.clientHeight;
                         if (!winWidth) return;
 
-                        if ( winWidth < winHeight ) {
-                            if ( (winWidth/winHeight) > (750/1200) ) {
-                                var fontSize = (100 * ( winWidth / 750 ));
-                            }else{
-                                var fontSize = ( 100 * ( winHeight / 1200 ));
+                        if (layoutType === 'contain') {
+                            if ( winWidth < winHeight ) {
+                                if ( (winWidth/winHeight) > (750/1200) ) {
+                                    var fontSize = (100 * ( winHeight / 1200 ));
+                                }else{
+                                    var fontSize = ( 100 * ( winWidth / 750 ));
+                                }
+                            } else {
+                                    var fontSize = (100 * ( winHeight / 1200 ));
                             }
                         } else {
-                            if ( (winWidth/winHeight) > (1200/750) ) {
-                                var fontSize = (100 * ( winWidth / 1200 ));
-                            }else{
-                                var fontSize = ( 100 * ( winHeight / 750 ));
+                            if ( winWidth < winHeight ) {
+                                if ( (winWidth/winHeight) > (750/1200) ) {
+                                    var fontSize = (100 * ( winWidth / 750 ));
+                                }else{
+                                    var fontSize = ( 100 * ( winHeight / 1200 ));
+                                }
+                            } else {
+                                var fontSize = (100 * ( winWidth / 750 ));
                             }
                         }
 
@@ -99,7 +108,7 @@
         </div>
 
         <!-- 视频 -->
-        <div class="m-video-wrap absf" id="videoWrap"></div>
+        <div class="m-video-wrap abcter" id="videoWrap"></div>
 
     </div>
     <script src="dist/js/zepto.min.js"></script>
