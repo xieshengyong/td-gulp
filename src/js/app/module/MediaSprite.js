@@ -105,27 +105,34 @@ fn.play = function (name, loop, callback) {
 
     self.playHandler && self.media.removeEventListener('timeupdate', self.playHandler);
 
+    // 当不设置起始点时，从上段结束点开始
     if (begin || begin === 0) {
         self.media.currentTime = begin;
         this.lastEnd = end;
     } else {
-        begin = this.lastEnd;
+        begin = this.lastEnd || 0;
         self.media.currentTime = begin;
     }
 
     var playHandler = function () {
-        var space = end - media.currentTime;
-        if (space <= update) {
+        // 在低性能机器上过长的间隔不足以触发定时计时，以常规方式
+        if (media.currentTime > end) {
+            media.pause();
             media.removeEventListener('timeupdate', playHandler);
+            self.pauseTimer && clearTimeout(self.pauseTimer);
+            return;
+        }
+        var space = end - media.currentTime;
+        if (space <= update * 2) {
             var time = Math.ceil(space * 1000);
             time = time > 0 ? time : 0;
-            // 在倒数第二次触发timeupdate时取消侦听，转为setTimeout定时暂停，以达到精准暂停效果
-            setTimeout(function () {
+            // 在距离指定点两个间隔处设置setTimeout定时暂停，以达到精准暂停效果
+            self.pauseTimer = setTimeout(function () {
                 if (loop) {
                     media.currentTime = begin;
-                    media.addEventListener('timeupdate', playHandler);
                 } else {
                     media.pause();
+                    media.removeEventListener('timeupdate', playHandler);
                 }
                 callback && callback();
             }, time);
