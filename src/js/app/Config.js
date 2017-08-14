@@ -24,24 +24,26 @@ Config.defShare = {
     cnzz: '1259179479'
 };
 
-Config.Loader = Preload.Loader;
+// 加载器
+Config.Loader = new Preload.Loader(Config.imgPath);
+// 寄存器
 Config.Buffer = Preload.Buffer;
 
-var med = new MediaSprite({
-    wrap: '.m-video-wrap',
-    type: 'video',
-    src: 'http://lolkhj.treedom.cn/dist/img/v7.mp4',
-    fps: 25,
-    timeline: {
-        a: {
-            begin: 0,
-            end: 4.05
-        }
-    }
-});
+// var med = new MediaSprite({
+//     wrap: '.m-video-wrap',
+//     type: 'video',
+//     src: 'http://lolkhj.treedom.cn/dist/img/v7.mp4',
+//     fps: 25,
+//     timeline: {
+//         a: {
+//             begin: 0,
+//             end: 4.05
+//         }
+//     }
+// });
 
-$('body').one('touchend', function () {
-    med.play('a');
-});
+// $('body').one('touchend', function () {
+//     med.play('a');
+// });
 
 module.exports = Config;

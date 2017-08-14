@@ -16,13 +16,13 @@ fn.init = function () {
         e.preventDefault();
     });
 
-    this.gload = new Config.Loader(Config.imgPath);
-    this.gload
+    Config.Loader
         .add(Imglist)
-        .on('progress', function (p) {
+        .onLoad(function (p) {
             console.log(p);
         })
         .load(function () {
+            console.log(this);
         });
 };
 
